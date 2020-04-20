@@ -1,0 +1,2 @@
+pandoc PRML/C_01.md PRML/reference.md -o tmp/PRML_tmp.md --atx-headers --wrap=preserve
+REM pandoc PRML/C_01.md  -o tmp/PRML_tmp.md -r markdown+footnotes+all_symbols_escapable --atx-headers --wrap=preserve
