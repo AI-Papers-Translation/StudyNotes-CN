@@ -16,7 +16,8 @@
 [^张连文,2006]: 张连文 and 郭海鹏. 贝叶斯网引论. Vol. 11. 科学出版社,2006.
 [^周志华,2018]: 周志华著. 机器学习 清华大学出版社. 2018.
 [^宗成庆,2018]: 宗成庆著. 统计自然语言处理 ( 第二版 ) . 清华大学出版社. 2018.
-[^Andrew,2004]: Andrew R. Webb. 统计模式识别 电子工业出版社. 2004.
+[^Aapo,2004]: Aapo Hyvarinen. 独立成分分析. 电子工业出版社. 2007.
+[^Andrew,2004]: Andrew R. Webb. 统计模式识别. 电子工业出版社. 2004.
 [^Bishop,1995]: Bishop,Christopher M. Neural networks for pattern recognition. Oxford university press,1995.
 [^Borman,2004]: Borman S. The expectation maximization algorithm-a short tutorial. Submitted for publication,2004,41.
 [^Charles,2011]: Charles Sutton and Andrew McCallum,An Introduction to Conditional Random Fields. Machine Learning 4.4 (2011): 267-373.
