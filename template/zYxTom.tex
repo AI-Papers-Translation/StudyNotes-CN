@@ -788,12 +788,12 @@ $else$
     \fancypagestyle{eisvogel-header-footer}{
       \fancyhead{}
       \fancyfoot{}
-      \lhead[$if(header-right)$$header-right$$else$$date$$endif$]{$if(header-left)$$header-left$$else$$title$$endif$}
-      \chead[$if(header-center)$$header-center$$else$$endif$]{$if(header-center)$$header-center$$else$$endif$}
-      \rhead[$if(header-left)$$header-left$$else$$title$$endif$]{$if(header-right)$$header-right$$else$$date$$endif$}
-      \lfoot[$if(footer-right)$$footer-right$$else$\thepage$endif$]{$if(footer-left)$$footer-left$$else$$for(author)$$author$$sep$, $endfor$$endif$}
-      \cfoot[$if(footer-center)$$footer-center$$else$$endif$]{$if(footer-center)$$footer-center$$else$$endif$}
-      \rfoot[$if(footer-left)$$footer-left$$else$$for(author)$$author$$sep$, $endfor$$endif$]{$if(footer-right)$$footer-right$$else$\thepage$endif$}
+      \lhead[]{$if(header-left)$$header-left$$else${\leftmark}$endif$}
+      \chead[]{$if(header-center)$$header-center$$else$$endif$}
+      \rhead[]{$if(header-right)$$header-right$$else${\rightmark}$endif$}
+      \lfoot[]{$if(footer-left)$$footer-left$$else$QQ: 526614962$endif$}
+      \cfoot[]{$if(footer-center)$$footer-center$$else$\href{https://zhuyuanxiang.github.io}{zYx.Tom GitHub Pages}$endif$}
+      \rfoot[]{$if(footer-right)$$footer-right$$else$\thepage$endif$}
       \renewcommand{\headrulewidth}{0.4pt}
       \renewcommand{\footrulewidth}{0.4pt}
     }
@@ -818,96 +818,96 @@ $endif$
 
 \begin{document}
 
-%%
-%% begin titlepage
-%%
 $if(beamer)$
 $else$
   $if(titlepage)$
-    \begin{titlepage}
+  %%
+  %% begin titlepage
+  %%
+  \begin{titlepage}
       $if(titlepage-background)$
-        \newgeometry{top=2cm, right=4cm, bottom=3cm, left=4cm}
+    \newgeometry{top=2cm, right=4cm, bottom=3cm, left=4cm}
       $else$
-        \newgeometry{left=6cm}
-      $endif$
+    \newgeometry{left=6cm}
+        $endif$
       $if(titlepage-color)$
-        \definecolor{titlepage-color}{HTML}{$titlepage-color$}
-        \newpagecolor{titlepage-color}\afterpage{\restorepagecolor}
-      $endif$
+    \definecolor{titlepage-color}{HTML}{$titlepage-color$}
+    \newpagecolor{titlepage-color}\afterpage{\restorepagecolor}
+        $endif$
       $if(titlepage-background)$
-        \tikz[remember picture,overlay] \node[inner sep=0pt] at (current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{$titlepage-background$}};
+    \tikz[remember picture,overlay] \node[inner sep=0pt] at (current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{$titlepage-background$}};
       $endif$
-      \newcommand{\colorRule}[3][black]{\textcolor[HTML]{#1}{\rule{#2}{#3}}}
-      \begin{flushleft}
-        \noindent
-        \\[-1em]
-        \color[HTML]{$if(titlepage-text-color)$$titlepage-text-color$$else$5F5F5F$endif$}
-        \makebox[0pt][l]{\colorRule[$if(titlepage-rule-color)$$titlepage-rule-color$$else$435488$endif$]{1.3\textwidth}{$if(titlepage-rule-height)$$titlepage-rule-height$$else$4$endif$pt}}
-        \par
-        \noindent
+    \newcommand{\colorRule}[3][black]{\textcolor[HTML]{#1}{\rule{#2}{#3}}}
+    \begin{flushleft}
+      \noindent
+      \\[-1em]
+      \color[HTML]{$if(titlepage-text-color)$$titlepage-text-color$$else$5F5F5F$endif$}
+      \makebox[0pt][l]{\colorRule[$if(titlepage-rule-color)$$titlepage-rule-color$$else$435488$endif$]{1.3\textwidth}{$if(titlepage-rule-height)$$titlepage-rule-height$$else$4$endif$pt}}
+      \par
+      \noindent
         
         $if(titlepage-background)$
-          % The titlepage with a background image has other text spacing and text size
-          {
-            \setstretch{2}
-            \vfill
-            \vskip -8em
-            \noindent {\huge \textbf{\textsf{$title$}}}
+% The titlepage with a background image has other text spacing and text size
+      {
+        \setstretch{2}
+        \vfill
+        \vskip -8em
+        \noindent {\huge \textbf{\textsf{$title$}}}
             $if(subtitle)$
-              \vskip 1em
-              {\Large \textsf{$subtitle$}}
-            $endif$
-            \vskip 2em
-            \noindent {\Large \textsf{$for(author)$$author$$sep$, $endfor$} \vskip 0.6em \textsf{$date$}}
-            \vfill
-          }
+        \vskip 1em
+        {\Large \textsf{$subtitle$}}
+              $endif$
+        \vskip 2em
+        \noindent {\Large \textsf{$for(author)$$author$$sep$, $endfor$} \vskip 0.6em \textsf{$date$}}
+        \vfill
+      }
         $else$
-          {
-            \setstretch{1.4}
-            \vfill
-            \noindent {\huge \textbf{\textsf{$title$}}}
-            $if(subtitle)$
-              \vskip 1em
-              {\Large \textsf{$subtitle$}}
-            $endif$
-            \vskip 2em
-            \noindent {\Large \textsf{$for(author)$$author$$sep$, $endfor$}}
-            \vfill
-          }
+      {
+        \setstretch{1.4}
+        \vfill
+        \noindent {\huge \textbf{\textsf{$title$}}}
+                $if(subtitle)$
+        \vskip 1em
+        {\Large \textsf{$subtitle$}}
+              $endif$
+        \vskip 2em
+        \noindent {\Large \textsf{$for(author)$$author$$sep$, $endfor$}}
+        \vfill
+      }
         $endif$
         
         $if(logo)$
-          \noindent
-          \includegraphics[width=$if(logo-width)$$logo-width$$else$100$endif$pt, left]{$logo$}
+      \noindent
+      \includegraphics[width=$if(logo-width)$$logo-width$$else$100$endif$pt, left]{$logo$}
         $endif$
         
         $if(titlepage-background)$
         $else$
-          \textsf{$date$}
+      \textsf{$date$}
         $endif$
-      \end{flushleft}
-    \end{titlepage}
-    \restoregeometry
+    \end{flushleft}
+  \end{titlepage}
+  \restoregeometry
+  %%
+  %% end titlepage
+  %%
   $endif$
 $endif$
 
-%%
-%% end titlepage
-%%
 
 $if(has-frontmatter)$
   \frontmatter
 $endif$
 $if(title)$
   $if(beamer)$
-    \frame{\titlepage}  
+  \frame{\titlepage}  
   $else$
-    \maketitle
+  \maketitle
   $endif$
   $if(abstract)$
-    \begin{abstract}
-      $abstract$
-    \end{abstract}
+  \begin{abstract}
+    $abstract$
+  \end{abstract}
   $endif$
 $endif$
 
@@ -918,87 +918,95 @@ $endif$
 
 $for(include-before)$
   $include-before$
-
 $endfor$
+
 $if(toc)$
   $if(toc-title)$
-    \renewcommand*\contentsname{$toc-title$}
+  \renewcommand*\contentsname{$toc-title$}
   $endif$
   $if(beamer)$
-    \begin{frame}[allowframebreaks]
+  \begin{frame}[allowframebreaks]
       $if(toc-title)$
-      \frametitle{$toc-title$}
+    \frametitle{$toc-title$}
       $endif$
-      \tableofcontents[hideallsubsections]
-      \clearpage % 使目录单独成页
-    \end{frame}
+    \tableofcontents[hideallsubsections]
+    \clearpage % 使目录单独成页
+  \end{frame}
     $if(toc-own-page)$
-      \newpage % 使目录单独成页
+  \newpage % 使目录单独成页
     $endif$
   $else$
-    {
-      $if(colorlinks)$
-      \hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$$endif$}
+  {
+  $if(colorlinks)$
+    \hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$$endif$}
       $endif$
-      \setcounter{tocdepth}{$if(toc-depth)$$toc-depth$$else$5$endif$}
-      \tableofcontents
-      \clearpage % 使目录单独成页
+    \setcounter{tocdepth}{$if(toc-depth)$$toc-depth$$else$5$endif$}
+    \tableofcontents
+    \clearpage % 使目录单独成页
       $if(toc-own-page)$
-      \newpage
+    \newpage
       $endif$
-    }
+  }
   $endif$
 $endif$
+
 $if(lot)$
   \listoftables
 $endif$
+
 $if(lof)$
   \listoffigures
 $endif$
+
 $if(linestretch)$
   \setstretch{$linestretch$}
 $endif$
+
 $if(has-frontmatter)$
   \mainmatter
 $endif$
+
 $body$
 
 $if(has-frontmatter)$
   \backmatter
 $endif$
+
+% natbib
 $if(natbib)$
   $if(bibliography)$
     $if(biblio-title)$
       $if(has-chapters)$
-        \renewcommand\bibname{$biblio-title$}
+  \renewcommand\bibname{$biblio-title$}
       $else$
-        \renewcommand\refname{$biblio-title$}
+  \renewcommand\refname{$biblio-title$}
       $endif$
     $endif$
     $if(beamer)$
-      \begin{frame}[allowframebreaks]{$biblio-title$}
-      \bibliographytrue
+  \begin{frame}[allowframebreaks]{$biblio-title$}
+    \bibliographytrue
     $endif$
     \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
     $if(beamer)$
-      \end{frame}
+  \end{frame}
     $endif$
-
   $endif$
 $endif$
+
+% biblatex
 $if(biblatex)$
   $if(beamer)$
-    \begin{frame}[allowframebreaks]{$biblio-title$}
-      \bibliographytrue
-      \printbibliography[heading=none]
-    \end{frame}
+  \begin{frame}[allowframebreaks]{$biblio-title$}
+    \bibliographytrue
+    \printbibliography[heading=none]
+  \end{frame}
   $else$
-    \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+  \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
   $endif$
-
 $endif$
+
 $for(include-after)$
   $include-after$
-
 $endfor$
+
 \end{document}
