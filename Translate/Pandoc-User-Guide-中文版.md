@@ -541,7 +541,7 @@ In order of preference, pandoc will look for Lua filters in
 
 `--reference-location = block`\|`section`\|`document`
 
-:   Specify whether footnotes (and references, if `reference-links` is set) are placed at the end of the current (top-level) block, the current section, or the document. The default is `document`. Currently only affects the markdown writer.
+定义脚注的位置:   Specify whether footnotes (and references, if `reference-links` is set) are placed at the end of the current (top-level) block, the current section, or the document. The default is `document`. Currently only affects the markdown writer.
 
 `--atx-headers`
 
@@ -597,7 +597,7 @@ The first number is added to the section number for top-level headings, the seco
 
 `--reference-doc=`_FILE_
 
-:   Use the specified file as a style reference in producing a docx or ODT file.
+在输出 docx 或者 ODT 文件时，定义文件作为样式参考。
 
     Docx
     
@@ -1661,15 +1661,15 @@ Pandoc uses these variables when [creating a PDF](#creating-a-pdf) with [`wkhtml
 `pointsize`
 :   point size (e.g. `10p`)
 
-#### Variables set automatically
+#### 自动设置的变量
 
-Pandoc sets these variables automatically in response to [options](#options) or document contents; users can also modify them. These vary depending on the output format, and include the following:
+Pandoc 自动设置 [选项](#选项) 中的变量 或者 文档的内容中的变量；用户可以修改这些变量。它们的变化依赖于输出的格式，具体如下：
 
 `body`
-:   body of document
+文档的主体。
 
 `date-meta`
-:   the `date` variable converted to ISO 8601 YYYY-MM-DD, included in all HTML based formats (dzslides, epub, html, html4, html5, revealjs, s5, slideous, slidy). The recognized formats for `date` are: `mm/dd/yyyy`, `mm/dd/yy`, `yyyy-mm-dd` (ISO 8601), `dd MM yyyy` (e.g. either `02 Apr 2018` or `02 April 2018`), `MM dd, yyyy` (e.g. `Apr. 02, 2018` or `April 02, 2018),`yyyy\[mm\[dd\]\]\]`(e.g.`20180402, `201804` or `2018`).
+日期的元数据。  `date` 变量依据 ISO 8601 YYYY-MM-DD 转换。所有基于 HTML 的格式 (dzslides, epub, html, html4, html5, revealjs, s5, slideous, slidy) 都这样操作。 The recognized formats for `date` are: `mm/dd/yyyy`, `mm/dd/yy`, `yyyy-mm-dd` (ISO 8601), `dd MM yyyy` (e.g. either `02 Apr 2018` or `02 April 2018`), `MM dd, yyyy` (e.g. `Apr. 02, 2018` or `April 02, 2018),`yyyy\[mm\[dd\]\]\]`(e.g.`20180402, `201804` or `2018`).
 
 `header-includes`
 :   contents specified by `-H/--include-in-header` (may have multiple values)
