@@ -1,0 +1,106 @@
+from: markdown
+# reader: may be used instead of from:
+to: LaTeX
+# writer: may be used instead of to:
+
+# leave blank for output to stdout:
+output-file: tmp/slp.tex
+# leave blank for input from stdin, use [] for no input:
+input-files:
+- slp/preface.md
+- slp/C-01.md
+- slp/C-02.md
+- slp/C-03.md
+- slp/C-04.md
+- slp/C-05.md
+- slp/C-06.md
+- slp/C-07.md
+- slp/C-08.md
+- slp/C-09.md
+- slp/C-10.md
+- slp/C-11.md
+- slp/C-12.md
+- slp/reference.md
+# or you may use input-file: with a single value
+
+template: template/zYxTom.tex
+standalone: true
+
+# note that structured variables may be specified:
+variables:
+    author: zYx.Tom
+    CJKmainfont: "Microsoft YaHei"
+    mainfont: "Arial Unicode MS"
+    monofont: "Cambria Math"
+
+# metadata values specified here are parsed as literal
+# string text, not markdown:
+metadata-file: slp/slp.yaml
+# or you may use metadata-file: with a single value
+
+# ERROR, WARNING, or INFO
+verbosity: WARNING
+log-file: tmp/log.json
+
+pdf-engine: xelatex
+
+# auto, preserve, or none
+wrap: auto
+columns: 78
+dpi: 72
+
+extract-media: mediadir
+
+# toc: may also be used instead of table-of-contents:
+# table-of-contents: true
+toc: true
+toc-depth: 4
+
+shift-heading-level-by: 1
+section-divs: true
+identifier-prefix: foo
+title-prefix: ""
+strip-empty-paragraphs: true
+strip-comments: false
+indented-code-classes: []
+ascii: true
+default-image-extension: ".jpg"
+
+# either a style name of a style definition file:
+highlight-style: pygments
+# or you may use syntax-definition: with a single value
+listings: false
+
+reference-doc: myref.docx
+
+email-obfuscation: javascript
+
+tab-stop: 4
+preserve-tabs: false
+
+incremental: false
+slide-level: 2
+
+reference-links: true
+# block, section, or document
+reference-location: block
+atx-headers: true
+
+# accept, reject, or all
+track-changes: accept
+
+html-q-tags: false
+css:
+- site.css
+
+# none, all, or best
+ipynb-output: best
+
+# A list of two-element lists
+request-headers:
+- ["User-Agent", "Mozilla/5.0"]
+
+fail-if-warnings: false
+dump-args: false
+ignore-args: false
+trace: false
