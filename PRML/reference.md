@@ -17,23 +17,21 @@
 
 [^Andrew,2004]: Andrew R. Webb. 统计模式识别。电子工业出版社。2004.
 
-[^Bishop,1995]: Bishop,Christopher M. Neural networks for pattern recognition. Oxford
-university press,1995.
+[^Bishop,1995]: Bishop Christopher M. Neural networks for pattern recognition. Oxford university press,1995.
 
-[^Borman,2004]: Borman S. The expectation maximization algorithm-a short tutorial.
-Submitted for publication,2004,41.
+[^Borman,2004]: Borman S. The expectation maximization algorithm-a short tutorial. Submitted for publication,2004,41.
 
-[^Charles,2011]: Charles Sutton and Andrew McCallum,An Introduction to Conditional
-Random Fields. Machine Learning 4.4 ( 2011 ) : 267-373.
+[^Charles&Andrew,2011]: Charles Sutton and Andrew McCallum,An Introduction to Conditional Random Fields. Machine Learning 4.4 ( 2011 ) : 267-373.
 
-[^Determined22,2017]: Determined22,<http://www.cnblogs.com/Determined22/p/5776791.html> ,
-2017.
+[^Determined22,2017]: <http://www.cnblogs.com/Determined22/p/5776791.html> ,2017.
 
-[^Duda,2003]: Duda R O,Peter E Hart,etc. 李宏东等译。模式分类。机械工业出版社。2003.
+[^Duda&Hart,1973]: Duda R O,Peter E Hart. Pattern Classification and Scene Analysis. Wiley.
 
-[^Friedman,Hastie,2001]: Friedman J,Hastie T,Tibshirani R. The elements of statistical learning New York: Springer series in statistics,2001.
+[^Duda,2003]: Duda R O,Peter E Hart,etc. 李宏东等译。模式分类(第二版)。机械工业出版社。2003.
 
-[^Friedman,Jerome,2001]: Friedman,Jerome H.「Greedy Function Approximation: A Gradient Boosting Machine.」Annals of Statistics,vol. 29,no. 5,2001,pp. 1189–1232.
+[^Friedman&Hastie,2001]: Friedman J, Hastie T,Tibshirani R. The elements of statistical learning New York: Springer series in statistics,2001.
+
+[^Friedman,2001]: Friedman J.  Greedy Function Approximation: A Gradient Boosting Machine. Annals of Statistics,vol. 29,no. 5,2001,pp. 1189–1232.
 
 [^Geof,2009]: Geof H. Givens, Jennifer A. Hoeting. 计算统计 人民邮件出版社。2009.
 
@@ -45,7 +43,7 @@ Random Fields. Machine Learning 4.4 ( 2011 ) : 267-373.
 
 [^Hyvarinen,2007]: Aapo Hyvarinen,Juha Karhunen. 周宗潭译 独立成分分析 电子工业出版社。2007.
 
-[^Kindermann,1980]: Kindermann,R.,& Snell,J. L. ( 1980 ) . Markov random fields and their applications ( Vol. 1 ) .
+[^Kindermann,1980]: Kindermann R.& Snell J. L. ( 1980 ) . Markov random fields and their applications ( Vol. 1 ) .
 
 [^Mitchell,2003]: Tom M. Mitchell. 肖华军等译。机器学习 机械工业出版社。2003
 
@@ -53,4 +51,3 @@ Random Fields. Machine Learning 4.4 ( 2011 ) : 267-373.
 
 [^Samuel,2007]: Samuel Karlin M. Taylor 著，庄兴无等译。随机过程初级教程。人民邮电出版社，2007.
 
-[^Sutton,2012]: Sutton,Charles,and Andrew McCallum. "An introduction to conditional random fields." Foundations and Trends® in Machine Learning 4.4 ( 2012 ) : 267-373.

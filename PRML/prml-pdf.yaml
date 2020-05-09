@@ -7,12 +7,13 @@ to: pdf
 output-file: prml/prml-notes.pdf
 # leave blank for input from stdin, use [] for no input:
 input-files:
-- prml/preface.md
-- prml/C_01.md
-- prml/C_02.md
-- prml/C_03.md
+# - prml/preface.md
+# - prml/C_01.md
+# - prml/C_02.md
+# - prml/C_03.md
 # - prml/C_04.md
-- prml/reference.md
+- prml/C_05.md
+# - prml/reference.md
 # or you may use input-file: with a single value
 
 template: template/zYxTom.tex
@@ -21,9 +22,10 @@ standalone: true
 # note that structured variables may be specified:
 variables:
     author: zYx.Tom
+    toc-title: "目录"
     CJKmainfont: "Microsoft YaHei"
     mainfont: "Arial Unicode MS"
-    monofont: "Cambria Math"
+    mathfont: "Cambria Math"
 
 
 # metadata values specified here are parsed as literal
