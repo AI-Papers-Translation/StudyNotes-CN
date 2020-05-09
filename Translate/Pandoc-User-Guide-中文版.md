@@ -266,15 +266,15 @@ Pandoc 使用 UTF-8 字符来编码输入和输出。如果你的文件编码格
 
 `--verbose`
 
-: 给出详细的调试输出。这个仅对 PDF 输出时有效。
+给出详细的调试输出。这个仅对 PDF 输出时有效。
 
 `--quiet`
 
-: 安静模式。抑制所有的警告信息。
+安静模式。抑制所有的警告信息。
 
 `--fail-if-warnings`
 
-: 遇到警告就退出转换过程。
+遇到警告就退出转换过程。
 
 `--log=`_FILE_
 
@@ -497,7 +497,7 @@ In order of preference, pandoc will look for Lua filters in
 
 `--syntax-definition=`_FILE_
 
-:   Instructs pandoc to load a KDE XML syntax definition file, which will be used for syntax highlighting of appropriately marked code blocks. This can be used to add support for new languages or to use altered syntax definitions for existing languages. This option may be repeated to add multiple syntax definitions.
+指导 pandoc 载入一个 KDE XML 语法定义的文件，这个文件将被用于语法高亮某个被标注的代码块。也可以被用于支持新的语言 或者 用来替代已经定义的语言。这个选项可以被重复加入多个语法定义。
 
 `-H` _FILE_, `--include-in-header=`_FILE_\|_URL_
 
@@ -519,7 +519,7 @@ In order of preference, pandoc will look for Lua filters in
 
 `--request-header=`_NAME_`:`_VAL_
 
-:   Set the request header _NAME_ to the value _VAL_ when making HTTP requests (for example, when a URL is given on the command line, or when resources used in a document must be downloaded). If you're behind a proxy, you also need to set the environment variable `http_proxy` to `http://...`.
+当发起 HTTP 请求时(例如：当在命令行中给定 URL 时；或者，当文档中的资源必须在下载时)设置请求头的内容 _NAME_  和 _VAL_  。如果你在 proxy 后面，还需要参考环境变量 `http_proxy` 访问 `http://...`.
 
 #### Options affecting specific writers {#options-affecting-specific-writers .options}
 
@@ -764,7 +764,7 @@ Note: if the source document is Markdown, a YAML metadata block in the document 
 
 :   Use [`biblatex`](https://ctan.org/pkg/biblatex) for citations in LaTeX output. This option is not for use with the `pandoc-citeproc` filter or with PDF output. It is intended for use in producing a LaTeX file that can be processed with [`bibtex`](https://ctan.org/pkg/bibtex) or [`biber`](https://ctan.org/pkg/biber).
 
-#### Math rendering in HTML {#math-rendering-in-html .options}
+#### Math rendering in HTML {#math-rendering-in-html}
 
 The default is to render TeX math as far as possible using Unicode characters. Formulas are put inside a `span` with `class="math"`, so that they may be styled differently from the surrounding text if needed. However, this gives acceptable results only for basic math, usually you will want to use `--mathjax` or another of the following options.
 
@@ -998,7 +998,7 @@ Fields that are omitted will just have their regular default values. So a defaul
 verbosity: INFO
 ```
 
-Default files can be placed in the `defaults` subdirectory of the user data directory and used from any directory. For example, one could create a file specifying defaults for writing letters, save it as `letter.yaml` in the `defaults` subdirectory of the user data directory, and then invoke these defaults from any directory using `pandoc --defaults letter` or `pandoc -dletter`.
+Default files can be placed in the `defaults` subdirectory of the user data directory and used from any directory. For example, one could create a file specifying defaults for writing letters, save it as `letter.yaml` in the `defaults` subdirectory of the user data directory, and then invoke these defaults from any directory using `pandoc --defaults letter` or `pandoc -d letter`.
 
 When multiple defaults are used, their contents will be combined.
 
@@ -1007,10 +1007,7 @@ Note that, where command-line arguments may be repeated (`--metadata-file`, `--c
 ## 模板
 
 当使用 `-s/--standalone` 选项时，pandoc 使用一个模板去增加头和尾元素从而生成一个独立的文档。默认模板使用下面的命令可以获得：
-
-    pandoc -D _FORMAT_
-
-其中 _FORMAT_ 是输出文件的格式。定制化模板使用 `--template` 来设置，从而覆盖系统默认的模板。默认模板存放在用户数据目录中，文件是 `templates/default._FORMAT_` 。
+`pandoc -D FORMAT`。其中 _FORMAT_ 是输出文件的格式。定制化模板使用 `--template` 来设置，从而覆盖系统默认的模板。默认模板存放在用户数据目录中，文件是 `templates/default._FORMAT_` 。
 
 _Exceptions:_
 
@@ -1034,9 +1031,9 @@ _Exceptions:_
 
 如果想在文档中包括 `$` 符号，可以使用 `$$`.
 
-#### Interpolated variables
+#### 插入变量
 
-A slot for an interpolated variable is a variable name surrounded by matched delimiters. Variable names must begin with a letter and can contain letters, numbers, `_`, `-`, and `.`. The keywords `it`, `if`, `else`, `endif`, `for`, `sep`, and `endfor` may not be used as variable names. Examples:
+插入变量的槽是用分隔符包裹的变量名称，变量名称必须以字母打着，后面可以跟随字母、数字、下划线(`_`)、分隔线(`-`) 和句点(`.`)。关键字(`it`, `if`, `else`, `endif`, `for`, `sep`, 和`endfor`)不可以用作变量名称。例子：
 
     $foo$
     $foo.bar.baz$
@@ -1047,43 +1044,46 @@ A slot for an interpolated variable is a variable name surrounded by matched del
     ${foo_bar.baz-bim}
     ${ foo }
 
-Variable names with periods are used to get at structured variable values. So, for example, `employee.salary` will return the value of the `salary` field of the object that is the value of the `employee` field.
+使用句点的变量名称用于获取结构化变量的值。例如：`employee.salary` 将返回对象`employee`域的 `salary` 域的值。
 
--   If the value of the variable is simple value, it will be rendered verbatim. (Note that no escaping is done; the assumption is that the calling program will escape the strings appropriately for the output format.)
--   If the value is a list, the values will be concatenated.
--   If the value is a map, the string `true` will be rendered.
--   Every other value will be rendered as the empty string.
+-   如果变量的值是个简单值，则会被逐字解析。 (注：不存在转义符。假设调用程序会依据输出格式转义字符串)。
+-   如果值是一个列表，则值会被连接起来。
+-   如果值是一个映射，则字符串 `true` 会被描述。
+-   所有其他值，都会被描述为空字符串。
 
-#### Conditionals
+#### 条件语句
 
-A conditional begins with `if(variable)` (enclosed in matched delimiters) and ends with `endif` (enclosed in matched delimiters). It may optionally contain an `else` (enclosed in matched delimiters). The `if` section is used if `variable` has a non-empty value, otherwise the `else` section is used (if present). Examples:
+一个条件由`if(variable)` 开始(用分隔符包裹) ，由 `endif` 结束( 用分隔符包裹). 可以选择是否需要 `else` (用分隔符包裹).  如果 `variable`不是空值，则 `if` 代码块被执行，否则 `else` 代码块被执行(如果存在). 例子：
 
+```latex
     $if(foo)$bar$endif$
-    
+
     $if(foo)$
-      $foo$
+        $foo$
     $endif$
-    
+
     $if(foo)$
     part one
     $else$
     part two
     $endif$
-    
+
     ${if(foo)}bar${endif}
-    
+
     ${if(foo)}
-      ${foo}
+        ${foo}
     ${endif}
-    
+
     ${if(foo)}
     ${ foo.bar }
     ${else}
     no foo!
     ${endif}
+```
 
-The keyword `elseif` may be used to simplify complex nested conditionals:
+关键字 `elseif` 用于解决复杂的嵌套条件。
 
+```latex
     $if(foo)$
     XXX
     $elseif(bar)$
@@ -1091,60 +1091,73 @@ The keyword `elseif` may be used to simplify complex nested conditionals:
     $else$
     ZZZ
     $endif$
+```
 
-#### For loops
+#### For 循环
 
-A for loop begins with `for(variable)` (enclosed in matched delimiters) and ends with `endfor` (enclosed in matched delimiters.
+一个 for 循环由`for(variable)` 开始( 用分隔符包裹)  和 `endfor` 结束 (用分隔符包裹).
 
--   If `variable` is an array, the material inside the loop will be evaluated repeatedly, with `variable` being set to each value of the array in turn, and concatenated.
--   If `variable` is a map, the material inside will be set to the map.
--   If the value of the associated variable is not an array or a map, a single iteration will be performed on its value.
+-   如果 `variable` 是个数组，则代码块中的元素将会被重复计算。将 `variable` 数组中的每个值轮流插入，再连接在一起。
+-   如果 `variable` 是个映射，则代码块中的元素会插入到映射中。
+-   如果值相关的变量既不是数组，也不是映射，一个简单的迭代将会基于其值执行。
 
 Examples:
 
-    $for(foo)$$foo$$sep$, $endfor$
-    
-    $for(foo)$
-      - $foo.last$, $foo.first$
-    $endfor$
-    
-    ${ for(foo.bar) }
-      - ${ foo.bar.last }, ${ foo.bar.first }
-    ${ endfor }
-    
-    $for(mymap)$
-    $it.name$: $it.office$
-    $endfor$
+```latex
+$for(foo)$$foo$$sep$, $endfor$
 
-You may optionally specify a separator between consecutive values using `sep` (enclosed in matched delimiters). The material between `sep` and the `endfor` is the separator.
+$for(foo)$
+    - $foo.last$, $foo.first$
+$endfor$
 
-    ${ for(foo) }${ foo }${ sep }, ${ endfor }
+${ for(foo.bar) }
+    - ${ foo.bar.last }, ${ foo.bar.first }
+${ endfor }
 
-Instead of using `variable` inside the loop, the special anaphoric keyword `it` may be used.
+$for(mymap)$
+$it.name$: $it.office$
+$endfor$
+```
 
-    ${ for(foo.bar) }
-      - ${ it.last }, ${ it.first }
-    ${ endfor }
+你可以使用 `sep` 在连续值之间自定义分隔符包裹匹配的定界符。在 `sep` 和 `endfor` 之间的元素就是分隔符。
+
+```latex
+${ for(foo) }${ foo }${ sep }, ${ endfor }
+```
+
+在循环中为了代替 `variable` 的使用，可以使用指代关键字  `it` 。
+
+```latex
+${ for(foo.bar) }
+    - ${ it.last }, ${ it.first }
+${ endfor }
+```
 
 #### Partials
 
 Partials (subtemplates stored in different files) may be included using the syntax
 
-    ${ boilerplate() }
+```latex
+${ boilerplate() }
+```
 
 Partials will be sought in the directory containing the main template, and will be assumed to have the same extension as the main template if they lack an explicit extension. (If the partials are not found here, they will also be sought in the `templates` subdirectory of the user data directory.)
 
 Partials may optionally be applied to variables using a colon:
 
-    ${ date:fancy() }
-    
-    ${ articles:bibentry() }
+```latex
+${ date:fancy() }
+
+${ articles:bibentry() }
+```
 
 If `articles` is an array, this will iterate over its values, applying the partial `bibentry()` to each one. So the second example above is equivalent to
 
-    ${ for(articles) }
-    ${ it:bibentry() }
-    ${ endfor }
+```latex
+${ for(articles) }
+${ it:bibentry() }
+${ endfor }
+```
 
 Note that the anaphoric keyword `it` must be used when iterating over partials. In the above examples, the `bibentry` partial should contain `it.title` (and so on) instead of `articles.title`.
 
@@ -2590,27 +2603,32 @@ The difference is that `+` is used instead of `|`. Other orgtbl features are not
 
 #### Extension: `pandoc_title_block`
 
-If the file begins with a title block
+文件可以由标题块开始
 
     % title
     % author(s) (separated by semicolons)
     % date
 
-it will be parsed as bibliographic information, not regular text. (It will be used, for example, in the title of standalone LaTeX or HTML output.) The block may contain just a title, a title and an author, or all three elements. If you want to include an author but no title, or a title and a date but no author, you need a blank line:
+这个标题块会被解析为书目信息，而不是标准文本。 (例子：在独立的 LaTeX 或者 HTML 输出中使用)。这个标题块可以仅包含标题，或者标题+作者，或者三者都有。不想包括的可以直接空白。
 
-    %
-    % Author
-    
-    % My title
-    %
-    % June 15, 2006
+```
+%
+% Author
+%
+```
 
-The title may occupy multiple lines, but continuation lines must begin with leading space, thus:
+```
+% My title
+%
+% June 15, 2006
+```
+
+标题可以输入多行标题，下一行必须有前导空格
 
     % My title
       on multiple lines
 
-If a document has multiple authors, the authors may be put on separate lines with leading space, or separated by semicolons, or both. So, all of the following are equivalent:
+作者可以输入多个作者，下一行必须有前导空格；也可以使用分号分开。
 
     % Author One
       Author Two
@@ -2620,41 +2638,41 @@ If a document has multiple authors, the authors may be put on separate lines wit
     % Author One;
       Author Two
 
-The date must fit on one line.
+日期输入必须是一行。
 
-All three metadata fields may contain standard inline formatting (italics, links, footnotes, etc.).
+三个元数据可以包含标准的正文格式 (包括：斜体、链接、脚注等等)。
 
-Title blocks will always be parsed, but they will affect the output only when the `--standalone` (`-s`) option is chosen. In HTML output, titles will appear twice: once in the document head -- this is the title that will appear at the top of the window in a browser -- and once at the beginning of the document body. The title in the document head can have an optional prefix attached (`--title-prefix` or `-T` option). The title in the body appears as an H1 element with class "title", so it can be suppressed or reformatted with CSS. If a title prefix is specified with `-T` and no title block appears in the document, the title prefix will be used by itself as the HTML title.
+标题块总是被解析的，但是只有在 `--standalone` (`-s`) 选项被设置时才会影响输出。在 HTML 输出中，标题将会显示两次：一次在文档标题——这个标题会被显示在浏览器的窗口的顶端；一次在文章的主体的开始。文档头的标题还可以使用一个可选的前缀选项 (`--title-prefix` or `-T` option). 文章主体的标题将会以 "title" 类的 H1 元素显示，因此它可以被 CSS 抑制或者重新格式化。如果一个标题的前缀被设置，而没有文档中没有标题块，则这个前缀会被当作 HTML 的标题。
 
-The man page writer extracts a title, man page section number, and other header and footer information from the title line. The title is assumed to be the first word on the title line, which may optionally end with a (single-digit) section number in parentheses. (There should be no space between the title and the parentheses.) Anything after this is assumed to be additional footer and header text. A single pipe character (`|`) should be used to separate the footer text from the header text. Thus,
+帮助页(man page ) 书写器从标题行中抽取标题、帮助页节编号 和 其他头和尾信息。假设标题在标题行的第一个单词，后面括号里面的数字是可靠的。(在标题和括号之间没有空格)。假设后面的任何信息都是附加的页头和页脚。 个简单的管道符号 (`|`) 应该被用来分隔页脚文本和页头文本。
 
     % PANDOC(1)
 
-will yield a man page with the title `PANDOC` and section 1.
+帮助页中的标题为 `PANDOC` 和 节编号 1.
 
     % PANDOC(1) Pandoc User Manuals
 
-will also have "Pandoc User Manuals" in the footer.
+增加页脚 "Pandoc User Manuals" 
 
     % PANDOC(1) Pandoc User Manuals | Version 4.0
 
-will also have "Version 4.0" in the header.
+增加页头 "Version 4.0" 
 
 #### Extension: `yaml_metadata_block`{#extension-yaml_metadata_block}
 
-A [YAML](https://yaml.org/spec/1.2/spec.html "YAML v1.2 Spec") metadata block is a valid YAML object, delimited by a line of three hyphens (`---`) at the top and a line of three hyphens (`---`) or three dots (`...`) at the bottom. A YAML metadata block may occur anywhere in the document, but if it is not at the beginning, it must be preceded by a blank line. (Note that, because of the way pandoc concatenates input files when several are provided, you may also keep the metadata in a separate YAML file and pass it to pandoc as an argument, along with your Markdown files:
+[YAML](https://yaml.org/spec/1.2/spec.html "YAML v1.2 Spec") 元数据块是有效的 YAML 对象，开头使用三个连字符(`---`) ，结尾使用三个边字符(`---`) 或者 三个句点 (`...`) 分隔。YAML 元数据块可以放在文档的任意位置，但是如果它不在最开始，那么数据块前面一定要留空白行。 (注：因为 pandoc 可以将输入文件连接起来，因此也可以将元数据块放在一个独立的 YAML 文件中。作为一个参数，接在所有的 Markdown 文件后面传给 pandoc )
 
     pandoc chap1.md chap2.md chap3.md metadata.yaml -s -o book.html
 
-Just be sure that the YAML file begins with `---` and ends with `---` or `...`.) Alternatively, you can use the `--metadata-file` option. Using that approach however, you cannot reference content (like footnotes) from the main markdown input document.
+YAML 文件由 `---` 开始，由 `---` or `...`结束。替代方案，使用 `--metadata-file` 选项。然而使用这个方法就不能从主 Markdown 输入文档中参考内容(例如：脚注)
 
-Metadata will be taken from the fields of the YAML object and added to any existing document metadata. Metadata can contain lists and objects (nested arbitrarily), but all string scalars will be interpreted as Markdown. Fields with names ending in an underscore will be ignored by pandoc. (They may be given a role by external processors.) Field names must not be interpretable as YAML numbers or boolean values (so, for example, `yes`, `True`, and `15` cannot be used as field names).
+元数据将从 YAML 对象的域中抽取，被加入到任何存在文档的元数据中。元数据可以包括列表和对象(任意的嵌套)，但是所有的字符串标量都会被解释为 Markdown。用下划线结束的域名将会被 pandoc 忽略(这个功能给了外部处理器机会)。域名不可以用 YAML 数字或者 布尔值(例如： `yes`, `True`, and `15` 不能用途域名).
 
-A document may contain multiple metadata blocks. If two metadata blocks attempt to set the same field, the value from the second block will be taken.
+文档可以包含多个元数据块。如果两个元数据块试图设置同一个域，则后面的块会覆盖前面的。
 
-When pandoc is used with `-t markdown` to create a Markdown document, a YAML metadata block will be produced only if the `-s/--standalone` option is used. All of the metadata will appear in a single block at the beginning of the document.
+当 pandoc 使用 `-t markdown` 去创建 Markdown 文档时，如果 `-s/--standalone` 选项被使用，则YAML 元数据块将被生成。所有的元数据将会出现在文档开头的单一块中。
 
-Note that [YAML](https://yaml.org/spec/1.2/spec.html "YAML v1.2 Spec") escaping rules must be followed. Thus, for example, if a title contains a colon, it must be quoted. The pipe character (`|`) can be used to begin an indented block that will be interpreted literally, without need for escaping. This form is necessary when the field contains blank lines or block-level formatting:
+注： [YAML](https://yaml.org/spec/1.2/spec.html "YAML v1.2 Spec") 转义规则必须被遵守。因此，如果标题中包含冒号，则标题必须被引号包裹。管道符号 (`|`) 可以用在缩进块的开始作为解释文本，而不需要转义。这个形式在域里面包含空白行或者块级别的格式化时是必须的。
 
     ---
     title:  'This is the title: it contains a colon'
@@ -2668,12 +2686,12 @@ Note that [YAML](https://yaml.org/spec/1.2/spec.html "YAML v1.2 Spec") escaping 
       It consists of two paragraphs.
     ...
 
-Template variables will be set automatically from the metadata. Thus, for example, in writing HTML, the variable `abstract` will be set to the HTML equivalent of the Markdown in the `abstract` field:
+模板变量将会自动依据元数据设置，因此在写 HTML时变量 `abstract` 将会自动从 Markdown  `abstract` 域中取得:
 
     <p>This is the abstract.</p>
     <p>It consists of two paragraphs.</p>
 
-Variables can contain arbitrary YAML structures, but the template must match this structure. The `author` variable in the default templates expects a simple list or string, but can be changed to support more complicated structures. The following combination, for example, would add an affiliation to the author if one is given:
+变量可以包括任意的 YAML 结构，但是模板必须匹配结构。在默认模板中 `author` 变量要求一个简单的列表或者字符串，但是可以改为支持更加复杂的结果。例如：下述的混合结构，在第一个作者加入 "affiliation" 信息时，第二个作者也可以如此操作：
 
     ---
     title: The document title
@@ -2684,7 +2702,7 @@ Variables can contain arbitrary YAML structures, but the template must match thi
       affiliation: University of Nowhere
     ...
 
-To use the structured authors in the example above, you would need a custom template:
+为了在上述例子中使用结构化的作者，则需要在模板中增加下述内容：
 
     $for(author)$
     $if(author.name)$
@@ -2694,7 +2712,7 @@ To use the structured authors in the example above, you would need a custom temp
     $endif$
     $endfor$
 
-Raw content to include in the document's header may be specified using `header-includes`; however, it is important to mark up this content as raw code for a particular output format, using the [`raw_attribute` extension](#extension-raw_attribute)), or it will be interpreted as markdown. For example:
+包含在文档头中的原始内容可以使用 `header-includes`; 然而，为特别的输出格式使用 [`raw_attribute` extension](#extension-raw_attribute) 将内容标注为原始代码是非常重要的)，或者依据 Markdown 解释。例如：
 
     header-includes:
     - |
@@ -2816,7 +2834,7 @@ This will work in all output formats that support small caps.
 
 #### 扩展: `tex_math_dollars`
 
-所有被包含在两个 `$` 中间的内容都被看作。第一个 `$` 必须在后面不接空格，第二个 `$` 必须在前面不接空格，并且后面不能立即接数字。因此，`$20,000` 和 `$30,000` 不会被解析为数学公式。 如果需要显示 `$字符`，可以使用转义符来实现。
+所有被包含在两个 `$` 中间的内容都被看作数学公式。第一个 `$` 必须在后面不接空格，第二个 `$` 必须在前面不接空格，并且后面不能立即接数字。因此，`$20,000` 和 `$30,000` 不会被解析为数学公式。 如果需要显示 `$字符`，可以使用转义符来实现。
 
 为了显示数学公式，使用 `$$` 分隔符。 ( 在这个例子中，分隔符可以在公式中使用空格分开 )
 
@@ -3158,11 +3176,11 @@ A bracketed sequence of inlines, as one would use to begin a link, will be treat
 
     [This is _some text_]{.class key="val"}
 
-### Footnotes
+### 脚注(Footnotes)
 
 #### Extension: `footnotes`
 
-Pandoc's Markdown allows footnotes, using the following syntax:
+Pandoc's Markdown 允许脚注，使用下述语法：
 
     Here is a footnote reference,[^1] and another.[^longnote]
     
@@ -3182,19 +3200,19 @@ Pandoc's Markdown allows footnotes, using the following syntax:
     This paragraph won't be part of the note, because it
     isn't indented.
 
-The identifiers in footnote references may not contain spaces, tabs, or newlines. These identifiers are used only to correlate the footnote reference with the note itself; in the output, footnotes will be numbered sequentially.
+脚注参考内容中的标识符不允许包括空格、制表符和新的行。这些标识符仅被用于脚注参考和其具体内容关联在一起；在输出中，脚注会被按照顺序数字编号。
 
-The footnotes themselves need not be placed at the end of the document. They may appear anywhere except inside other block elements (lists, block quotes, tables, etc.). Each footnote should be separated from surrounding content (including other footnotes) by blank lines.
+脚注本身不需要放在文档的末尾。他们可以出现在任意位置(不包括块元素中，例如：列表、引用、表格等等)。每个脚注可以通过空白行区分环绕其周围的文本内容(以及其他脚注)。
 
 #### Extension: `inline_notes`
 
-Inline footnotes are also allowed (though, unlike regular notes, they cannot contain multiple paragraphs). The syntax is as follows:
+正文脚注也被允许(虽然不像规则笔记，不能包括多个段落)。语法如下：
 
     Here is an inline note.^[Inlines notes are easier to write, since
     you don't have to pick an identifier and move down to type the
     note.]
 
-Inline and regular footnotes may be mixed freely.
+正文脚注和正规脚注可以混合使用。
 
 ### Citations
 
@@ -3358,37 +3376,37 @@ Allow `<` and `>` to be backslash-escaped, as they can be in GitHub flavored Mar
 
 Allow a list to occur right after a paragraph, with no intervening blank space.
 
-#### 扩展: `four_space_rule`
+#### Extension: `four_space_rule`
 
 Selects the pandoc \<= 2.0 behavior for parsing lists, so that four spaces indent are needed for list item continuation paragraphs.
 
-#### 扩展: `spaced_reference_links`
+#### Extension: `spaced_reference_links`
 
 Allow whitespace between the two components of a reference link, for example,
 
     [foo] [bar].
 
-#### 扩展: `hard_line_breaks`
+#### Extension: `hard_line_breaks`
 
 Causes all newlines within a paragraph to be interpreted as hard line breaks instead of spaces.
 
-#### 扩展: `ignore_line_breaks`
+#### Extension: `ignore_line_breaks`
 
 Causes newlines within a paragraph to be ignored, rather than being treated as spaces or as hard line breaks. This option is intended for use with East Asian languages where spaces are not used between words, but text is divided into lines for readability.
 
-#### 扩展: `east_asian_line_breaks`
+#### Extension: `east_asian_line_breaks`
 
 Causes newlines within a paragraph to be ignored, rather than being treated as spaces or as hard line breaks, when they occur between two East Asian wide characters. This is a better choice than `ignore_line_breaks` for texts that include a mix of East Asian wide characters and other characters.
 
-#### 扩展：`emoji`
+#### Extension：`emoji`
 
 解析文本表情符号。例如： `:smile:` 作为 Unicode 表情符号。
 
-#### 扩展: `tex_math_single_backslash`
+#### Extension: `tex_math_single_backslash`
 
 Causes anything between `\(` and `\)` to be interpreted as inline TeX math, and anything between `\[` and `\]` to be interpreted as display TeX math. Note: a drawback of this extension is that it precludes escaping `(` and `[`.
 
-#### 扩展: `tex_math_double_backslash`
+#### Extension: `tex_math_double_backslash`
 
 Causes anything between `\\(` and `\\)` to be interpreted as inline TeX math, and anything between `\\[` and `\\]` to be interpreted as display TeX math.
 
