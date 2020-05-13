@@ -4,6 +4,9 @@
 
 ## 更新日志
 
+-   SLM，附录 C 结束
+-   SLM，第六章结束
+-   MLW，第三章结束
 -   MLW，第一章结束
 -   PRML 第四章结束
 -   李航，统计学习方法，小蓝书，初稿
@@ -15,6 +18,9 @@
 
 -   exercises：习题集
 -   media : Markdown 文件 相关的 图片
+-   Duda.PC : Richard O. Duda, 模式分类(第二版) ,
+-   Hagan.NND : Martin T. Hagan, 神经网络设计
+-   Mitchell.ML : Tom M. Mitchell, 机器学习 , 机械工业出版社
 -   ML : 机器学习 总结
 -   MLW : 周志华 , 机器学习 西瓜书 , Machine Learning Watermelon
 -   NLP : 自然语言处理 总结
