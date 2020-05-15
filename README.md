@@ -4,12 +4,13 @@
 
 ## 更新日志
 
+-   SLM，第四章结束
 -   SLM，附录 C 结束
 -   SLM，第六章结束
+-   SLM，初稿
 -   MLW，第三章结束
 -   MLW，第一章结束
 -   PRML 第四章结束
--   李航，统计学习方法，小蓝书，初稿
 -   PRML 第三章结束
 -   PRML 第二章结束
 -   PRML 第一章结束
@@ -18,13 +19,15 @@
 
 -   exercises：习题集
 -   media : Markdown 文件 相关的 图片
--   Duda.PC : Richard O. Duda, 模式分类(第二版) ,
--   Hagan.NND : Martin T. Hagan, 神经网络设计
+-   Andrew.SPR : Andrew R. Webb, 统计模式识别 ( 第二版 ) , 电子工业出版社
+-   Duda.PC : Richard O. Duda, 模式分类 ( 第二版 ) , 机械工业出版社
+-   Hagan.NND : Martin T. Hagan, 神经网络设计 , 机械工业出版社
 -   Mitchell.ML : Tom M. Mitchell, 机器学习 , 机械工业出版社
 -   ML : 机器学习 总结
--   MLW : 周志华 , 机器学习 西瓜书 , Machine Learning Watermelon
+-   MLW : 周志华，机器学习 西瓜书 , Machine Learning Watermelon
 -   NLP : 自然语言处理 总结
--   PRML : Christopher M. Bishop, 模式识别与机器学习, Pattern Recognization & Machine Learning
+-   PRML : Christopher M. Bishop, 模式识别与机器学习 , Pattern Recognization & Machine Learning
+-   Sergios.PR : Sergios Theodoridis, 模式识别( 第二版 ) , 电子工业出版社
 -   SLM : 李航 , 统计学习方法 , Statistical Learning Methods
 -   SLP : Daniel Jurafsky , 自然语言处理综论 , Speech & Language Processing
 -   SNLP : 宗成庆 , 统计自然语言处理 , Statistical Natural Language Processing
