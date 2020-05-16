@@ -13,7 +13,7 @@ input-files:
 # - prml/C_03.md
 # - prml/C_04.md
 - prml/C_05.md
-# - prml/reference.md
+# - ML/reference.md
 # or you may use input-file: with a single value
 
 template: template/zYxTom.tex
