@@ -525,7 +525,7 @@ In order of preference, pandoc will look for Lua filters in
 
 `--self-contained`
 
-:   Produce a standalone HTML file with no external dependencies, using `data:` URIs to incorporate the contents of linked scripts, stylesheets, images, and videos. Implies `--standalone`. The resulting file should be "self-contained," in the sense that it needs no external files and no net access to be displayed properly by a browser. This option works only with HTML output formats, including `html4`, `html5`, `html+lhs`, `html5+lhs`, `s5`, `slidy`, `slideous`, `dzslides`, and `revealjs`. Scripts, images, and stylesheets at absolute URLs will be downloaded; those at relative URLs will be sought relative to the working directory (if the first source file is local) or relative to the base URL (if the first source file is remote). Elements with the attribute `data-external="1"` will be left alone; the documents they link to will not be incorporated in the document. Limitation: resources that are loaded dynamically through JavaScript cannot be incorporated; as a result, `--self-contained` does not work with `--mathjax`, and some advanced features (e.g. zoom or speaker notes) may not work in an offline "self-contained" `reveal.js` slide show.
+:   Produce a standalone HTML file with no external dependencies, using `data:` URIs to incorporate the contents of linked scripts, stylesheets, images, and videos. Implies `--standalone`. The resulting file should be "self-contained," in the sense that it needs no external files and no net access to be displayed properly by a browser. This option works only with HTML output formats, including `html4`, `html5`, `html+lhs`, `html5+lhs`, `s5`, `slidy`, `slideous`, `dzslides`, and `revealjs`. Scripts, images, and stylesheets at absolute URLs will be downloaded; those at relative URLs will be sought relative to the working directory (if the first source file is local) or relative to the base URL (if the first source file is remote). Elements with the attribute `data-external="1"` will be left alone; the documents they link to will not be incorporated in the document. Limitation: resources that are loaded dynamically through JavaScript cannot be incorporated; as a result, `--self-contained` does not work with `--mathjax`, and some advanced features (e.g. zoom or speaker notes) may not work in an offline "self-contained" `reveal.js` slide show.
 
 `--html-q-tags`
 
@@ -1333,7 +1333,7 @@ will include `title`, `author` and `description` as standard document properties
 
 :   the base script direction, either `rtl` (right-to-left) or `ltr` (left-to-right).
 
-    For bidirectional documents, native pandoc `span`s and `div`s with the `dir` attribute (value `rtl` or `ltr`) can be used to override the base direction in some output formats. This may not always be necessary if the final renderer (e.g. the browser, when generating HTML) supports the [Unicode Bidirectional Algorithm](https://www.w3.org/International/articles/inline-bidi-markup/uba-basics).
+    For bidirectional documents, native pandoc `span`s and `div`s with the `dir` attribute (value `rtl` or `ltr`) can be used to override the base direction in some output formats. This may not always be necessary if the final renderer (e.g. the browser, when generating HTML) supports the [Unicode Bidirectional Algorithm](https://www.w3.org/International/articles/inline-bidi-markup/uba-basics).
     
     When using LaTeX for bidirectional documents, only the `xelatex` engine is fully supported (use `--pdf-engine=xelatex`).
 
@@ -1577,25 +1577,25 @@ These variables function when using BibLaTeX for [citation rendering](#citation-
 Pandoc uses these variables when [creating a PDF](#creating-a-pdf) with ConTeXt.
 
 `fontsize`
-:   font size for body text (e.g. `10pt`, `12pt`)
+:   font size for body text (e.g. `10pt`, `12pt`)
 
 `headertext`, `footertext`
 :   text to be placed in running header or footer (see [ConTeXt Headers and Footers](https://wiki.contextgarden.net/Headers_and_Footers)); repeat up to four times for different placement
 
 `indenting`
-:   controls indentation of paragraphs, e.g. `yes,small,next` (see [ConTeXt Indentation](https://wiki.contextgarden.net/Indentation)); repeat for multiple options
+:   controls indentation of paragraphs, e.g. `yes,small,next` (see [ConTeXt Indentation](https://wiki.contextgarden.net/Indentation)); repeat for multiple options
 
 `interlinespace`
-:   adjusts line spacing, e.g. `4ex` (using [`setupinterlinespace`](https://wiki.contextgarden.net/Command/setupinterlinespace)); repeat for multiple options
+:   adjusts line spacing, e.g. `4ex` (using [`setupinterlinespace`](https://wiki.contextgarden.net/Command/setupinterlinespace)); repeat for multiple options
 
 `layout`
 :   options for page margins and text arrangement (see [ConTeXt Layout](https://wiki.contextgarden.net/Layout)); repeat for multiple options
 
 `linkcolor`, `contrastcolor`
-:   color for links outside and inside a page, e.g. `red`, `blue` (see [ConTeXt Color](https://wiki.contextgarden.net/Color))
+:   color for links outside and inside a page, e.g. `red`, `blue` (see [ConTeXt Color](https://wiki.contextgarden.net/Color))
 
 `linkstyle`
-:   typeface style for links, e.g. `normal`, `bold`, `slanted`, `boldslanted`, `type`, `cap`, `small`
+:   typeface style for links, e.g. `normal`, `bold`, `slanted`, `boldslanted`, `type`, `cap`, `small`
 
 `lof`, `lot`
 :   include list of figures, list of tables
@@ -1610,22 +1610,22 @@ Pandoc uses these variables when [creating a PDF](#creating-a-pdf) with ConTeXt.
 :   page number style and location (using [`setuppagenumbering`](https://wiki.contextgarden.net/Command/setuppagenumbering)); repeat for multiple options
 
 `papersize`
-:   paper size, e.g. `letter`, `A4`, `landscape` (see [ConTeXt Paper Setup](https://wiki.contextgarden.net/PaperSetup)); repeat for multiple options
+:   paper size, e.g. `letter`, `A4`, `landscape` (see [ConTeXt Paper Setup](https://wiki.contextgarden.net/PaperSetup)); repeat for multiple options
 
 `pdfa`
-:   adds to the preamble the setup necessary to generate PDF/A of the type specified, e.g. `1a:2005`, `2a`. If no type is specified (i.e. the value is set to True, by e.g. `--metadata=pdfa` or `pdfa: true` in a YAML metadata block), `1b:2005` will be used as default, for reasons of backwards compatibility. Using `--variable=pdfa` without specified value is not supported. To successfully generate PDF/A the required ICC color profiles have to be available and the content and all included files (such as images) have to be standard conforming. The ICC profiles and output intent may be specified using the variables `pdfaiccprofile` and `pdfaintent`. See also [ConTeXt PDFA](https://wiki.contextgarden.net/PDF/A) for more details.
+:   adds to the preamble the setup necessary to generate PDF/A of the type specified, e.g. `1a:2005`, `2a`. If no type is specified (i.e. the value is set to True, by e.g. `--metadata=pdfa` or `pdfa: true` in a YAML metadata block), `1b:2005` will be used as default, for reasons of backwards compatibility. Using `--variable=pdfa` without specified value is not supported. To successfully generate PDF/A the required ICC color profiles have to be available and the content and all included files (such as images) have to be standard conforming. The ICC profiles and output intent may be specified using the variables `pdfaiccprofile` and `pdfaintent`. See also [ConTeXt PDFA](https://wiki.contextgarden.net/PDF/A) for more details.
 
 `pdfaiccprofile`
-:   when used in conjunction with `pdfa`, specifies the ICC profile to use in the PDF, e.g. `default.cmyk`. If left unspecified, `sRGB.icc` is used as default. May be repeated to include multiple profiles. Note that the profiles have to be available on the system. They can be obtained from [ConTeXt ICC Profiles](https://wiki.contextgarden.net/PDFX#ICC_profiles).
+:   when used in conjunction with `pdfa`, specifies the ICC profile to use in the PDF, e.g. `default.cmyk`. If left unspecified, `sRGB.icc` is used as default. May be repeated to include multiple profiles. Note that the profiles have to be available on the system. They can be obtained from [ConTeXt ICC Profiles](https://wiki.contextgarden.net/PDFX#ICC_profiles).
 
 `pdfaintent`
-:   when used in conjunction with `pdfa`, specifies the output intent for the colors, e.g. `ISO coated v2 300\letterpercent\space (ECI)` If left unspecified, `sRGB IEC61966-2.1` is used as default.
+:   when used in conjunction with `pdfa`, specifies the output intent for the colors, e.g. `ISO coated v2 300\letterpercent\space (ECI)` If left unspecified, `sRGB IEC61966-2.1` is used as default.
 
 `toc`
 :   include table of contents (can also be set using `--toc/--table-of-contents`)
 
 `whitespace`
-:   spacing between paragraphs, e.g. `none`, `small` (using [`setupwhitespace`](https://wiki.contextgarden.net/Command/setupwhitespace))
+:   spacing between paragraphs, e.g. `none`, `small` (using [`setupwhitespace`](https://wiki.contextgarden.net/Command/setupwhitespace))
 
 `includesource`
 :   include all source documents as file attachments in the PDF file
@@ -1663,16 +1663,16 @@ Pandoc uses these variables when [creating a PDF](#creating-a-pdf) with [`wkhtml
 #### Variables for ms
 
 `fontfamily`
-:   font family (e.g. `T` or `P`)
+:   font family (e.g. `T` or `P`)
 
 `indent`
-:   paragraph indent (e.g. `2m`)
+:   paragraph indent (e.g. `2m`)
 
 `lineheight`
-:   line height (e.g. `12p`)
+:   line height (e.g. `12p`)
 
 `pointsize`
-:   point size (e.g. `10p`)
+:   point size (e.g. `10p`)
 
 #### 自动设置的变量
 
@@ -1682,7 +1682,7 @@ Pandoc 自动设置 [选项](#选项) 中的变量 或者 文档的内容中的�
 文档的主体。
 
 `date-meta`
-日期的元数据。  `date` 变量依据 ISO 8601 YYYY-MM-DD 转换。所有基于 HTML 的格式 (dzslides, epub, html, html4, html5, revealjs, s5, slideous, slidy) 都这样操作。 The recognized formats for `date` are: `mm/dd/yyyy`, `mm/dd/yy`, `yyyy-mm-dd` (ISO 8601), `dd MM yyyy` (e.g. either `02 Apr 2018` or `02 April 2018`), `MM dd, yyyy` (e.g. `Apr. 02, 2018` or `April 02, 2018),`yyyy\[mm\[dd\]\]\]`(e.g.`20180402, `201804` or `2018`).
+日期的元数据。  `date` 变量依据 ISO 8601 YYYY-MM-DD 转换。所有基于 HTML 的格式 (dzslides, epub, html, html4, html5, revealjs, s5, slideous, slidy) 都这样操作。 The recognized formats for `date` are: `mm/dd/yyyy`, `mm/dd/yy`, `yyyy-mm-dd` (ISO 8601), `dd MM yyyy` (e.g. either `02 Apr 2018` or `02 April 2018`), `MM dd, yyyy` (e.g. `Apr. 02, 2018` or `April 02, 2018),`yyyy\[mm\[dd\]\]\]`(e.g.`20180402, `201804` or `2018`).
 
 `header-includes`
 :   contents specified by `-H/--include-in-header` (may have multiple values)
@@ -1713,7 +1713,7 @@ Pandoc 自动设置 [选项](#选项) 中的变量 或者 文档的内容中的�
     
     Similarly, `outputfile` can be `-` if output goes to the terminal.
     
-    If you need absolute paths, use e.g. `$curdir$/$sourcefile$`.
+    If you need absolute paths, use e.g. `$curdir$/$sourcefile$`.
 
 `curdir`
 :   working directory from which pandoc is run.
@@ -1894,7 +1894,7 @@ reads literate Haskell source formatted with Markdown conventions and writes ord
 
 writes HTML with the Haskell code in bird tracks, so it can be copied and pasted as literate Haskell source.
 
-Note that GHC expects the bird tracks in the first column, so indented literate code blocks (e.g. inside an itemized environment) will not be picked up by the Haskell compiler.
+Note that GHC expects the bird tracks in the first column, so indented literate code blocks (e.g. inside an itemized environment) will not be picked up by the Haskell compiler.
 
 ### Other extensions
 
@@ -2611,13 +2611,13 @@ The difference is that `+` is used instead of `|`. Other orgtbl features are not
 
 这个标题块会被解析为书目信息，而不是标准文本。 (例子：在独立的 LaTeX 或者 HTML 输出中使用)。这个标题块可以仅包含标题，或者标题+作者，或者三者都有。不想包括的可以直接空白。
 
-```
+```yaml
 %
 % Author
 %
 ```
 
-```
+```yaml
 % My title
 %
 % June 15, 2006
@@ -2652,11 +2652,11 @@ The difference is that `+` is used instead of `|`. Other orgtbl features are not
 
     % PANDOC(1) Pandoc User Manuals
 
-增加页脚 "Pandoc User Manuals" 
+增加页脚 "Pandoc User Manuals"
 
     % PANDOC(1) Pandoc User Manuals | Version 4.0
 
-增加页头 "Version 4.0" 
+增加页头 "Version 4.0"
 
 #### Extension: `yaml_metadata_block`{#extension-yaml_metadata_block}
 
@@ -3109,7 +3109,7 @@ An image with nonempty alt text, occurring by itself in a paragraph, will be ren
 
     ![This is the caption](/url/of/image.png)
 
-How this is rendered depends on the output format. Some output formats (e.g. RTF) do not yet support figures. In those formats, you'll just get an image in a paragraph by itself, with no caption.
+How this is rendered depends on the output format. Some output formats (e.g. RTF) do not yet support figures. In those formats, you'll just get an image in a paragraph by itself, with no caption.
 
 If you just want a regular inline image, just make sure it is not the only thing in the paragraph. One way to do this is to insert a nonbreaking space after the image:
 
