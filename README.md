@@ -26,6 +26,7 @@
 -   ML : 机器学习 总结
 -   MLW : 周志华，机器学习 西瓜书 , Machine Learning Watermelon
 -   NLP : 自然语言处理 总结
+    -   NNM-for-NLP : Yoav Goldberg, 基于深度学习的自然语言处理
 -   PRML : Christopher M. Bishop, 模式识别与机器学习 , Pattern Recognization & Machine Learning
 -   Sergios.PR : Sergios Theodoridis, 模式识别( 第二版 ) , 电子工业出版社
 -   SLM : 李航 , 统计学习方法 , Statistical Learning Methods
