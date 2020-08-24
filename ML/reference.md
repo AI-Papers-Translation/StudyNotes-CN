@@ -8,6 +8,7 @@
 [^Duda&Hart,1973]: Duda R O,Peter E Hart. Pattern Classification and Scene Analysis. Wiley.
 [^Duda,2003]: Duda R O,Peter E Hart,etc. 李宏东等译。模式分类 ( 第二版 )。机械工业出版社。2003.
 [^Friedman&Hastie,2001]: Friedman J, Hastie T, Tibshirani R. The elements of statistical learning. New York: Springer series in statistics, 2001.
+[^Friedman,2000]: Friedman, J. H., T. Hastie, and R. Tibshirani (2000). Additive logistic regression: a statistical view of boosting. Annals of Statistics 28, 337–407.
 [^Friedman,2001]: Friedman, Jerome H. Greedy Function Approximation: A Gradient Boosting Machine. Annals of Statistics, vol. 29, no. 5,2001, pp. 1189–1232.
 [^Geof,2009]: Geof H. Givens, Jennifer A. Hoeting. 计算统计 人民邮件出版社。2009.
 [^Goodfellow,2017]: Goodfellow I, Bengio Y, Courville A. 深度学习。人民邮电出版社。2017.
@@ -27,3 +28,4 @@
 [^盛骤，2015]: 盛骤等编，概率论与数理统计 ( 第四版 ) , 高等教育出版社，2015.
 [^苏剑林，2017]: 苏剑林。<https://spaces.ac.cn/archives/4277>. 2017.
 [^袁亚湘，1997]: 袁亚湘，孙文瑜，最优化理论与方法，科学出版社，1997.
+[^Simard,2003]: Simard, P. Y., D. Steinkraus, and J. Platt (2003). Best practice for convolutional neural networks applied to visual document analysis. In Proceedings International Conference on Document Analysis and Recognition (ICDAR), pp. 958–962. IEEE Computer Society.
