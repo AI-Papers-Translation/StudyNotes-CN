@@ -1,5 +1,6 @@
 REM pandoc ML/metadata.yaml ML/Outline.md ML/Regression.md ML/reference.md -o tmp/ML_PPT.pptx --reference-doc=template/reference.pptx
-pandoc ML/Regression.md ML/reference.md -o tmp/ML_PPT.pptx --reference-doc=template/mathematics.pptx
+REM pandoc ML/Regression.md ML/reference.md -o tmp/ML_PPT.pptx --reference-doc=template/mathematics.pptx
+pandoc ML/ML-Architecture.md -o tmp/ML_PPT.pptx --reference-doc=template/mathematics.pptx
 powerpnt tmp/ML_PPT.pptx
 
 REM -------------------------------------------------------
