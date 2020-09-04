@@ -1,6 +1,24 @@
-# Transformer 特征提取器
+# 1. Transformer 特征提取器
 
-<img src="pictures/image-20200901104633208.png" alt="image-20200901104633208" style="zoom:50%;" />
+## 1.1 Word Embedding
+
+Word2Vec
+
+Glove
+
+## 1.2 RNN的改进与拓展
+
+Seq2Seq
+
+LSTM/GRU
+
+attention/self-attention
+
+# 2. Transformer 模型编码
+
+全部采用 self-attention 层进行 编码，引入了三个变换矩阵，得到Q、K、V三个向量，然后利用词与词之间Q和K相乘的结构进行注意力计算，将权重系数乘以V就是新的词向量表示。
+
+<img src="../../../../../../Pictures/TMP/image-20200901104633208.png" alt="image-20200901104633208" style="zoom:50%;" />
 
  ( 图 1-Transformer 模型结构 )
 
@@ -8,7 +26,7 @@
 链接：http://47.93.208.249:9825/tree/0.Teacher/Online
 密码：807d4a2c
 
-# 1. Sequence
+## 2.1 Sequence
 
 模型的输入
 
@@ -27,9 +45,9 @@ $$
 \end{aligned}
 $$
 
-# 2. Embedding and Encoding
+## 2.2 Embedding and Encoding
 
-## 2.1 Embedding
+### 2.2.1 Embedding
 
 序列的词嵌入编码
 
@@ -39,7 +57,13 @@ $$
     -   $M$为目标序列的长度
 -   $d_{\text{model}}$为词嵌入的维度
 
-## 2.2 Encoding Function
+### 2.2.2 Positional Encoding
+
+自注意力机制并没有考虑位置信息，因此需要引入位置信息
+
+位置嵌入的维度和字向量的维度一致，将每个位置编号，然后每个编号对应这个向量，最后将该向量与词向量相加，从而实现为每个词引入位置信息。
+
+#### Encoding Function
 
 编码函数：
 
@@ -52,7 +76,7 @@ $$
 
 注：使用 sin 和 cos 函数，是因为基于和差化积公式，<!--TODO：公式推导-->
 
-## 2.3 Positional Encoding
+#### Sequence Positional Encoding
 
 输入序列的位置编码：$Pos\_Enc ( \text{inputs_position} ) \in\mathbb{R}^{N\times d_{\text{model}}}$
 
@@ -102,7 +126,7 @@ $$
     -   $W_i^K\in\mathbb{R}^{d_{model}\times d_k}$
     -   $W_i^V\in\mathbb{R}^{d_{model}\times d_v}$
     -   $W^O\in\mathbb{R}^{hd_v\times d_{model}}$
-        -   输出扩展的维度：$h$
+    -   输出扩展的维度：$h$
 
 $$
 MultiHeadAttention ( e_{in} ) =MultiHead ( Q,K,V ) =Concat ( head_1,\cdots,head_h ) W^O )
@@ -116,7 +140,9 @@ $$
 
 ## 3.3 编码器 PAD 掩码
 
-pad掩码：是用于长句子对齐的，对于短句子进行填充，填充$-\infty$求导后为零
+pad掩码：是用于长句子对齐的，对于短句子进行填充
+
+-   因为pad掩码如果为0，当进行 softmax 计算时，0会使计算产生偏差，因此采用mask方法进行补偿，即把0的位置填充$-\infty$求导后为零
 
 -   $\text{enc_pad_mask}\in\mathbb{R}^{N\times N}$
 -   $e_{jp}=\begin{cases}True,i_p=0\\False,i_p\neq 0\end{cases},j=1,2,\cdots,N$
@@ -126,7 +152,15 @@ $$
 \text{enc_pad_mask}_j= ( e_{j1},e_{j2},\cdots,e_{jp},\cdots,e_{jN} )
 $$
 
-### 3.4 前馈神经网络
+## 3.4 残差连接
+
+经过注意力矩阵加权之后的V，即Attention(Q,K,V)，进行转置使其与$X_{embedding}$的维度一致，即[batch_size,sequence length, embedding dimension]，然后把他们加起来做残差连接
+
+## 3.5 层归一化
+
+把神经网络中的隐藏层归一化为标准正态分布，从而加快训练速度，加速模型收敛
+
+## 3.6 前馈神经网络
 
 -   参数矩阵：$W_1\in\mathbb{R}^{d_{model}\times d_{ff}},W_2\in\mathbb{R}^{d_{ff}\times d_{model}}$
 -   偏置：$b_1\in\mathbb{R}^{d_{ff}},b_2\in\mathbb{R}^{d_{model}}$
@@ -140,9 +174,9 @@ FFN ( e_{mid} )
 \end{aligned}
 $$
 
-## 4. Decoder
+# 4. Decoder
 
-### 4.1 Decoder Structure
+## 4.1 Decoder Structure
 
 解码器的结构
 
