@@ -1,0 +1,17 @@
+/* @theme gitppt */
+@import 'gaia';
+
+section {
+    width: 1280px;
+    height: 960px;
+    font-size: 25px;
+    padding: 80px;
+  }
+  
+  h1 {
+    font-size: 3rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
